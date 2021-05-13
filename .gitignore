@@ -1,0 +1,12 @@
+CentosoRecipes/bin
+CentosoRecipes\bin
+CentosoRecipes/obj
+CentosoRecipes\obj
+
+.history
+.vscode
+.visualstudio
+.visualstudiocode
+
+ContosoRecipes\obj
+\ContosoRecipes\bin
