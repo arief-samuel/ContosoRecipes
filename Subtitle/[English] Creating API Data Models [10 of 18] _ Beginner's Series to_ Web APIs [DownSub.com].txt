@@ -1,0 +1,248 @@
+>> We've mentioned a few
+times in this series
+
+that Web APIs allow us to
+work with the resources.
+
+But thus far, we haven't
+formally defined or modeled up
+
+what the resources would look
+like for our recipes API.
+
+We have to ask ourselves,
+
+well, what does a recipe look like?
+
+What types of properties
+would it have?
+
+How would we pass that
+along in an HTTP message?
+
+Well, that's what we're going
+to talk about in this video.
+
+Along the way, I want to
+
+introduce you to a
+language feature for C#
+
+9 that allow us to do that
+and we call that records.
+
+Now, if you've ever
+written any C# before,
+
+you should be familiar with classes.
+
+One of the use cases for classes is
+
+allow us to model real-world
+things in our code.
+
+Classes can represent things like
+
+people or animals or reading games.
+
+Now classes can have properties and
+
+those properties can have values.
+
+When we talk about C# 9 on records.
+
+Well, records are almost
+exactly like classes,
+
+except that they add some
+additional benefits to them.
+
+We get support for things like
+immutability and equality.
+
+But we can also write
+a little bit less code
+
+whenever we're creating our records.
+
+If you take a look at the screen,
+
+you can see that I've started to
+
+define what a recipe
+record would look like.
+
+I'll have things like the title
+
+or the descriptions
+or the ingredients.
+
+I even have a datetime
+that represents
+
+when this actual record was created.
+
+Now, this isn't all
+there is to records,
+
+and I definitely recommend
+you head over to
+
+the Docs to learn more about them.
+
+But for now, let's head
+over to Visual Studio
+
+and see how we can start working
+with records inside of our API.
+
+Just like you saw in
+that previous slide,
+
+I've gone ahead and
+created a recipes record
+
+and I've added that to the models
+folder inside of our project.
+
+Now let's take a look at
+the recipes controller
+
+and see how we could
+use this new record.
+
+First, let's inspect
+the GET operation.
+
+You'll notice here that I'm no longer
+
+just returning an array of strings,
+
+but instead I'm returning
+an array of recipes.
+
+Also notice that I'm only
+filling out the title property,
+
+and I'm simply doing that because
+
+I wanted to keep the
+code samples small.
+
+But as you're building your own APIs,
+
+make sure you fill out as many
+properties as is necessary.
+
+Other than that, my action
+method is pretty much the same.
+
+I'm still receiving that
+query string parameter,
+
+and I'm still using that okay method
+
+to return an HTTP okay status.
+
+Now let's head down and check
+out the POST operation.
+
+Inside of this operation,
+
+this is where we're going
+to create new recipes.
+
+We're going to inspect the user
+
+or the client to send us some
+information that we could use.
+
+Well, that's probably going
+to come from the HTTP body.
+
+Notice that I'm using that
+from body binding attributes
+
+to associate that parameter
+to our action method.
+
+Once that's complete, we can either
+
+return a bad request if
+the operation failed,
+
+or we could return
+an HTTP 201 created,
+
+which means that
+everything was successful.
+
+Let's go ahead and try this out.
+
+With the Swagger UI up,
+
+let's take a look at
+the GET operation
+
+first. I'll hit "Try it out".
+
+I'll put a number
+here, I'll execute it.
+
+Then as you can see here,
+
+the data is returned to
+us in a JSON format,
+
+which is usually the
+default for our Web APIs.
+
+But also notice that we're
+seeing all of those properties
+
+that are associated
+with our recipe record.
+
+Let's head over and check
+out the POST operation.
+
+Now with the POST operation,
+
+we're going to have to supply
+some information to our API.
+
+The good thing with
+this swagger UI is that
+
+it fills out some of
+those properties for us.
+
+All we have to do is
+change the values.
+
+I'm going to leave them
+as that is for now.
+
+Let's go ahead and execute this.
+
+You can see at the bottom,
+
+I got a 201 status code.
+
+Now we have successfully created
+
+our recipe resource for our Web API.
+
+But I want to move forward from
+
+these hard-coded values that we're
+returning from our responses.
+
+In the next video, we're going
+to see how we can connect
+
+a data source to store and
+retrieve our information.
+
+[MUSIC]
+
