@@ -24,13 +24,13 @@ namespace ContosoRecipes.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetRecipes()
+        public ActionResult GetRecipes([FromQuery] int count)
         {
             string[] recipes= {"Oxtail", "Curry Chicken", "Dumplings"};
 
             if(!recipes.Any())
                 return NotFound();
-            return Ok(recipes);
+            return Ok(recipes.Take(count));
 
         }
         
