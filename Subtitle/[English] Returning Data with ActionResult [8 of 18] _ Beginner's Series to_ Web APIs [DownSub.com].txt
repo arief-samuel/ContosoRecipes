@@ -1,0 +1,161 @@
+>> Web APIs can return responses
+
+that are calling client in a
+variety of different ways,
+
+and those responses might
+represent: successful operations,
+
+failed operations, even operations
+we might want to retry.
+
+Also, we might want to associate
+some data with those responses.
+
+That could represent a
+collection of things,
+
+one thing, or maybe we just want
+to send over an empty body.
+
+In this video, we'll look at some
+of the options for returning
+
+data from our Web APIs
+inside of ASP.NET Core.
+
+You may recall from
+earlier in the series,
+
+that our Git operation
+look something like this,
+
+where we were only returning
+a list of string
+
+While this works fine,
+
+this operation doesn't give
+us the flexibility that
+
+we need to apply some of
+those Web API conventions.
+
+Now, we still want to be able
+to return data from an API,
+
+but we also want to
+be able to control
+
+the responses that get
+sent back to the client.
+
+Or we're going to see
+how we can do this
+
+using a facility known
+as Action Results.
+
+Now the first thing that we need
+to do to apply action results
+
+is I want to change the
+name of my return type,
+
+and I'm going to return a
+type of Action Results.
+
+Now, the next thing I want to do is,
+
+I want to return an HTTP okay.
+
+That means it was a
+successful response,
+
+and I also want to provide the data.
+
+What I can actually do is I
+can call the okay method,
+
+and then I can pass to that method,
+
+the data that I want to have
+returned to the client.
+
+Now, you might be wondering,
+
+where exactly did this
+okay method come from?
+
+It turns out there's a
+lot of helper methods
+
+that are available inside of
+that controller base cost
+
+that would allow us to
+return Action Results.
+
+Let's try and return another one.
+
+Let's say, for instance,
+
+our recipes type didn't
+have anything in it.
+
+Let's say recipes.Any was empty.
+
+Now, what are the things
+we might want to do
+
+is return a not found and returning
+
+not found signals to our client that
+
+we weren't able to find anything
+that you are looking for.
+
+Notice how we can do that by just
+calling the not found method.
+
+Not only can we return our data
+using a successful okay response,
+
+but we can also signal other
+texts of responses as well.
+
+If you continue digging around
+
+inside of that controller base class,
+
+you'll notice that there's tons of
+
+other helper methods that are there,
+
+to allow us to return
+common Action Results.
+
+Action Results are really
+good for returning
+
+customers' responses
+to our API clients.
+
+But they're also really helpful
+
+when it comes to
+generating the metadata,
+
+that gets used in our Swagger UI.
+
+Now, stay tuned because
+in the next video,
+
+we're going to learn
+how to pull information
+
+out of the HTTP request using
+a concept known as binding.
+
+[MUSIC]
+

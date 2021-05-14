@@ -1,0 +1,291 @@
+>> If we're going to
+issue a request for API,
+
+it's important that we know
+where it lives and how to
+
+access the particular resources
+that we want to work with.
+
+This is where URLs come into play.
+
+URLs are essentially
+the address of our API.
+
+Now using a combination of URLs,
+
+HTTP methods, and some other
+information inside the requests.
+
+ASP.NET Core is able to
+invoke the right action
+
+with it inside of the controller
+and a processor requests.
+
+This is known as routing.
+
+That's what we're going to talk
+about in this particular video.
+
+Why don't we take a look
+at an example of a URL.
+
+This one is coming
+from Microsoft Graph.
+
+This is an API that allows us to get
+
+information from our M365 account.
+
+Now if we break up this URL,
+
+we can see I just made up
+of a scheme with lists,
+
+for instance, what
+protocol that we're using.
+
+There's also a host name that lets us
+
+know what domain does
+this API live under.
+
+Lastly, we have the path.
+
+The path tells us how do I
+
+get to that resource that
+I want to work with?
+
+So if I read it out.
+
+I'm saying I want to
+issue an HTTP request to
+
+Microsoft Graph to get
+information about my account.
+
+Now, using all this information
+that we've learned so far,
+
+let's see how we could apply
+routing to ASP.NET Core.
+
+Let's open up our Web API controller.
+
+Now, the recommended
+way to apply routing to
+
+our Web APIs is by using
+routing attributes.
+
+You might have noticed on line 10,
+
+we've had this attribute added for
+
+us ever since we created
+this controller.
+
+Now using routing
+attributes were able to
+
+specify the path that we want
+to associate with our code.
+
+Again, on line 10, this
+particular route attribute
+
+is letting us know that our
+controller is going to be
+
+listening to anything that comes on
+
+the path /api/ and the
+name of the controller.
+
+In this case, the name of
+our controller is recipes.
+
+If I decided to change the
+name of my controller and
+
+call it something like
+contacts or products,
+
+the name of the path that
+
+it would listen to would
+also change as well.
+
+Another option we have is instead of
+
+using this controller
+syntax that's here,
+
+I could remove this and I
+could just hard-code recipes.
+
+None of it changes and I have
+
+a fixed name as I changed
+the name of my controller,
+
+the name of the path that it's
+associated with won't change.
+
+You can do that depending on if
+
+you want to have that
+level of consistency.
+
+Now, this running attribute on
+line 10 applies to the controller
+
+and so therefore it applies to
+
+all the action methods inside
+of the controller as well.
+
+But if we wanted to, we can go
+a little bit more granular,
+
+a controlled routing on
+the action method level.
+
+Let's check out this
+delete method here.
+
+Notice I have this
+HttpDelete attribute.
+
+If I want it to be a little
+bit more specific and maybe
+
+I want to delete everything,
+
+I could specify all
+here in this attribute.
+
+Now what will happen is that this
+
+will listen to path /api/recipes/all,
+
+so that whenever I issue
+my delete requests,
+
+that's the path that
+it'll have to use.
+
+Another thing that we
+could do is specify
+
+tokens that we want
+to use as variables.
+
+For instance, let's say I wanted to
+
+delete a resource
+with a particular ID.
+
+I can use these curly
+brackets and give it the name
+
+of the parameter or token
+that I want to use,
+
+and now here inside
+of my action method,
+
+I can accept a variable
+with the same name.
+
+ASP.NET Core will do the
+job of matching those names
+
+together to make sure that the data
+
+gets passed into my action method.
+
+So now what will happen is that
+instead of listening to all,
+
+now this would respond
+to request for delete,
+
+apirecipes/1, apirecipes/12,
+
+slash whatever you feel like
+you want to put inside of it.
+
+Why don't we go ahead and debug
+this and see if it works?
+
+I'm going to hit the "Run" button and
+
+I'm going to wait for Visual Studio
+
+to build my application and spin
+up that web browser for me.
+
+Now that my browser is up, I can see
+
+all the various
+operations from my API.
+
+I'll select the "Delete" one since
+
+that's the one we want to work with.
+
+Notice now here I
+also have the ability
+
+to add this parameter
+whenever I try it out.
+
+When I hit "Try it out" and I am
+
+going to put 12 in
+here, for instance.
+
+When I "Execute" that,
+
+now it should make a
+request to /api/recipes/12.
+
+Notice it hit my breakpoint,
+
+and then when I inspect the value of
+
+that particular
+parameter, it says 12.
+
+ASP.NET Core is able to
+get that information from
+
+the route and now I could use it to
+
+process the request inside
+of my action method.
+
+Now, there's a lot
+more to learn about
+
+routing inside of ASP.NET Core.
+
+But I think this is a
+pretty good foundation
+
+for us building Web APIs.
+
+In the next video, we're going to
+
+spend a little bit more time in that
+
+Swagger UI and learn
+how we can really
+
+use it to debug our Web API projects.
+
+[MUSIC]
+

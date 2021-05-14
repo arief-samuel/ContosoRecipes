@@ -1,0 +1,202 @@
+>> Throughout this series,
+
+you've seen me use this website to
+debug a web APIs we work on it.
+
+You're probably wondering,
+well, what is this site,
+
+where did it come
+from, and how does it
+
+know so much information
+about a web API?
+
+Well, that's what we're going
+to talk about in this video.
+
+We're going to learn
+how we're able to debug
+
+our web API using something
+called the Swagger UI.
+
+Now, Swagger is a collection
+of open source tools that make
+
+it easier for developers to
+build the consume web APIs.
+
+Some of those tools include
+things like client generation,
+
+API documentation, even the
+
+ability for us to debug our
+APIs lab using this UI.
+
+Underneath all of those tools,
+
+Swagger relies on something known
+as the open API specification,
+
+that spec allows us to define some of
+
+the detailed things that
+are APIs are able to do.
+
+Now, we're going to dive deeper into
+
+the open API specification a
+little bit later in the series,
+
+but for now, let's head
+over to Visual studio and
+
+see how Swagger is
+enabled in some of our
+
+ASP.NET Core web API templates.
+
+Swagger support an
+ASP.NET Core can be
+
+enabled by installing a new Git
+package called Swashbuckle.
+
+If you're using the web API
+templates in .Net five,
+
+then this package will
+be available to you
+
+by default whenever you
+create a new project.
+
+Let's take a look at our startup.cs
+
+file and see how some of
+these things get setup.
+
+On line 26, I want to look at
+my ConfigureServices method.
+
+Inside here, you should see a call to
+
+add Swagger gen and inside of that,
+
+we're specifying the name of
+our API as well as the version.
+
+As we move down a little
+bit to configure method,
+
+in the first few lines,
+
+we can see that we're
+enabling swagger support,
+
+but only for applications
+running in development mode.
+
+That means that, if you
+publish this app to
+
+production then we shouldn't
+
+see some of these additional
+Swagger features.
+
+On line 41, we make a
+call to use Swagger.
+
+This enables the generation of
+
+that open API document that we could
+
+use to get some really
+detailed information
+
+about our API endpoints.
+
+Then on line 42, there's a
+call to use Swagger gen,
+
+we point that to the API import.
+
+On line 42, we make a
+call to use Swagger UI,
+
+and that enables that
+webpage UI experience
+
+that we've been using so
+far to test out our APIs.
+
+All we have to do is point it to
+
+that open API document that we
+generated in that previous line.
+
+Let's go ahead and run this.
+
+Now that our page is
+up, you should have
+
+a good idea about where some of
+this information comes from.
+
+On the top left, we can see
+the name of our API as well as
+
+the version then on the right
+side on a Select definition,
+
+we can see the different documents
+
+that are available for us to try out,
+
+so far there's only one.
+
+In the middle of this document,
+
+we can see the different operations
+that are available on our API.
+
+Like you've seen before,
+
+we can inspect this and see
+
+the different parameters
+our API expects,
+
+we can try it out, run it live,
+
+and see what actually feels like.
+
+Also, we can see the
+different responses
+
+that are returned from our API.
+
+This is a really good experience,
+
+not just for building web
+APIs locally by yourself,
+
+but also sharing with your
+team so they can learn
+
+about some of the capabilities
+of your API endpoints.
+
+In a future video,
+
+we'll dive a little bit further
+into open API and we'll learn
+
+about some of the other
+features that we could
+
+use to really customize this UI.
+

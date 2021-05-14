@@ -1,0 +1,253 @@
+>> In a previous video,
+
+we learned about some of
+the components that make
+
+up HTTP requests and responses.
+
+That includes things like the
+status codes or the HTTP headers,
+
+or even the body that gets
+sent over in a message.
+
+When it comes to building web APIs,
+
+there's usually common set of
+conventions that are industry uses.
+
+Some map those components to
+
+the types of work we
+want our API to do.
+
+In this video, we're going to take
+
+a look at some of those conventions,
+
+and learn how to implement them
+inside of the ASP.NET Core.
+
+When we talk about APIs,
+
+we usually look at them
+as a common set of
+
+operations that we want to
+
+execute against a given
+collection of resources.
+
+For instance, those
+resources might be
+
+products in our inventory or
+contacts in our address book,
+
+recipes inside of your recipe book.
+
+Once you have those resources,
+
+there's usually a common set
+
+of operations that
+you want to execute.
+
+For instance, I might want to
+create a new one or delete one.
+
+I might want to update
+an existing one or issue
+
+a query to retrieve some of
+the ones that we already have.
+
+It turns out HTTP has already defined
+
+ways that we could execute these
+types of request from our client.
+
+If you take a look at the
+table, on the left side,
+
+you can see I've defined
+some common actions.
+
+Create, read, update, and delete,
+
+and then the next
+column and also listed
+
+some HTTP methods that
+match those given actions.
+
+For instance, if I wanted
+to create something,
+
+I can issue a Post request.
+
+If wanted to read something,
+
+I could issue a Get request.
+
+In the last two columns,
+
+these have to do with the responses
+
+that got returned from the server.
+
+We need to know what is the status
+of that particular request;
+
+was it successful or not,
+
+were things created or not,
+
+were they found or were they
+not found, was everything.
+
+We use HTTP status codes to
+
+issue those things and that's what
+you're seeing here right now.
+
+These are all the HTTP methods and
+
+all the HTTP status codes
+
+that you could use when
+you're building your API.
+
+But I think it's a really good start.
+
+Why don't we head over
+to Visual Studio and
+
+see how we can implement
+some of these conventions.
+
+The first thing that
+we'll do is open that
+
+Recipes controller recreated
+in a previous video.
+
+You'll notice that I've added
+
+some additional action
+methods to our controller.
+
+We have get recipes,
+
+create new recipes, and
+also delete recipes.
+
+Notice all these actions have
+
+their associated HTTP
+method with them.
+
+When I want to get things
+I'm using HttpGet,
+
+when I want to create
+things I'm using HttpPost.
+
+Also when I want to delete
+things, I'm using HttpDelete.
+
+These should match some
+of those conventions
+
+that we saw in that previous diagram.
+
+If I decide to open
+up the Get Recipes,
+
+you'll notice that I'm still
+
+following some of those
+common conventions.
+
+When I want to return information
+
+and let's say this
+operation was successful,
+
+I could use "Okay",
+
+and that all turned
+out status code and
+
+I can just give it the payload
+that I wanted to return.
+
+You can see that on line 21.
+
+If for whatever reason I was
+unable to find my recipes, well,
+
+I can just return on
+NotFound status code,
+
+and I can use that with
+the NotFound method
+
+that you see me using on line 20.
+
+Let's take a look at the
+HttpDelete operation.
+
+This shouldn't be too much different.
+
+If everything was
+successful and I was
+
+able to delete this resource,
+
+then I'll just return NoContent.
+
+That just means that,
+well, it was successful
+
+and there wasn't anything
+that I needed to return.
+
+Also, if something bad happened and
+
+maybe I was unable to delete
+it for whatever reason,
+
+then I'll return a BadRequest.
+
+You can see I'm doing
+that there on line 42.
+
+You might notice that I don't
+
+have all the necessary
+operations implemented.
+
+As an exercise for you,
+
+why don't you try creating
+
+an update operation to update
+the particular recipe resource?
+
+Remember you have to use the right
+HTTP method add status codes.
+
+Try it out and let us
+know how it works out.
+
+In the next video,
+we're going to take
+
+a look at routing and learn how
+
+we can customize that
+inside of the ASP.NET Core.
+
+[MUSIC]
+

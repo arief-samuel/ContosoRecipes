@@ -1,0 +1,133 @@
+>> ASP.NET Core defines a
+lot of interesting types and
+
+properties that we could use to
+inspect the incoming request.
+
+We can even define the types of
+
+information we want to
+pull out of the request
+
+and have it provided to our
+action methods as parameters.
+
+This process is usually
+referred to as binding.
+
+Now when it comes to binding,
+
+there's a lot of different parts from
+
+that request that we can
+get information from.
+
+For instance, we might want to
+get information from the body,
+
+or from an HTTP header,
+or even the query string.
+
+We usually refer to these
+as binding sources.
+
+The way that we specify a binding
+source inside of our code,
+
+is [inaudible] we can
+use binding attributes.
+
+So we can use a from
+attribute and say
+
+I want to get information
+from the header,
+
+or from the body,
+
+or I want to get it
+from the query string.
+
+Now, let's take a look at a
+practical example and see how we
+
+can use these binding parameters
+inside of Visual Studio.
+
+Let's take another look
+at our GET operation
+
+inside of our recipes controller.
+
+Now a common ask whenever
+requesting resources is to be able
+
+to limit the number of resources
+that get returned from our API.
+
+One way we could do this is by
+specifying a count parameter.
+
+Now, where exactly is this
+information is going to come from?
+
+Like we mentioned before,
+
+we can use those binding attributes.
+
+Here, I'm specifying from query.
+
+That means that ASP.NET Core is
+
+going to pull that
+from the query string.
+
+The next thing that
+I want to do is use
+
+that parameter inside
+of my action method.
+
+Here you can see I'm
+using a take method from
+
+link to return the right
+number of recipes.
+
+Let's go ahead and run
+this and see what happens.
+
+Now that my Swagger UI is up,
+
+let's inspect that GET operation.
+
+Notice that I have that count
+parameter available for me to use.
+
+I can give it a value,
+and let's execute it.
+
+One, so that's the right number,
+
+and then two. There you go.
+
+We know that the right value
+is being pulled out of
+
+the query string and supply
+to our action method.
+
+Now this is not the end of binding
+and there's way more sources
+
+that we could use to supply
+information to our Web API.
+
+But we're going to
+take a look at some of
+
+those a little further
+on into series.
+
+[MUSIC]
+

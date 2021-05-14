@@ -1,0 +1,226 @@
+>> Hi everyone. Thank you
+again for joining us for
+
+our Introductory Series to Building
+Web APIs with ASP.NET Core.
+
+In this video, we're going
+to take a look at HTTP,
+
+and explore some of these
+fundamental concepts
+
+that allow us to share information
+between different places.
+
+Now, HTTP actually stands for
+Hypertext Transfer Protocol,
+
+and it was designed as an
+application level protocol
+
+for distributed and
+collaborative systems.
+
+Now what that essentially
+means is that,
+
+it allows two systems to
+communicate with each
+
+other even though they may
+not be in the same place.
+
+One of the more common use cases for
+
+HTTP is actually
+powering the Internet,
+
+which I'm sure a lot of us use on
+a very regular basis day-to-day.
+
+Also, HTTP is an open
+standard and it was
+
+defined in a document
+called RFC 2616.
+
+If you're interested in
+learning about some of
+
+the more intricate details
+about how the protocol works,
+
+I definitely recommend
+that you should look up
+
+that document in your
+search engine of choice.
+
+Now, let's take a moment
+to understand how
+
+information flows back and
+forth when it comes to HTTP.
+
+The protocol relies on
+the concept of there
+
+being both are clients
+and the server.
+
+The client being the
+application or entity that's
+
+responsible for generating requests
+
+with a resource that
+they want to work with.
+
+As an example, imagine a user
+walks up to their laptop,
+
+opens their web browser,
+
+and now they want to find
+
+information about what
+are some of the most
+
+recent on.NET or Xamarin Show
+
+episodes that are
+available in Channel nine.
+
+The job of the web browser is
+to generate those requests
+
+and send it over to the server
+using the address of the website.
+
+Now on the other side,
+
+will have the server whose job
+is to receive that request,
+
+process it accordingly, and
+now it's going to generate
+
+an HTTP response that is going to
+
+send back over to the
+requesting client.
+
+The client then
+receives that response,
+
+processes it, and then now it's
+
+going to show those
+results to the user.
+
+Let's take a look and see how
+
+exactly you can compose
+an HTTP request.
+
+The three main parts
+that we're going to look
+
+at are the request line,
+
+headers, and the body.
+
+Now the request line
+contains information
+
+such as the HTTP verb it's using,
+
+and the path, and also the version of
+
+HTTP that's being used
+for this request.
+
+Next we have the HTTP headers.
+
+The headers are essentially
+key value pairs that
+
+contain metadata that's associated
+with this respect to requests.
+
+Next we have an
+optional body section.
+
+In a body section,
+
+we have information that
+we can optionally send
+
+along with that request that might
+be useful for processing it.
+
+Now let's take a look
+at an HTTP response.
+
+The response structure is very
+similar to that of an HTTP request,
+
+but you'll see instead of
+having a request line,
+
+we'll have a status line.
+
+A status line is there to let
+us know what was the status,
+
+what was the results of actually
+sending that request over.
+
+So was it successful,
+was it not successful?
+
+That it failed or did it succeed?
+
+Also, you'll notice that an HTTP
+response also contains headers,
+
+and just like with the requests,
+
+these are key value pairs
+that are associated
+
+with this particular response that's
+being returned to the client.
+
+Next, we have the
+Option body section,
+
+and in that body section,
+
+will have any information
+that was either
+
+requested from the client or
+
+anything that's
+necessarily needs to be
+
+associated with this request
+is heading back over.
+
+Now, we've gotten a good look
+in how HTTP allows us to send
+
+information between two places and
+
+how to compose requests
+and responses.
+
+In the next video, we're
+going to learn how to create
+
+our first Web API using ASP.NET Core.
+
+[MUSIC]
+
