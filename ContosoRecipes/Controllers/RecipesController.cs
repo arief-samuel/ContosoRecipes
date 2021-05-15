@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ContosoRecipes.Models;
+using ContosoRecipes.Data;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace ContosoRecipes.Controllers
 {
@@ -19,10 +21,11 @@ namespace ContosoRecipes.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IRecipeDataStore _recipeData;
 
-        public RecipesController(ILogger<WeatherForecastController> logger)
+        public RecipesController(IRecipeDataStore recipeData)
         {
-            _logger = logger;
+            _recipeData = recipeData;
         }
 
         [HttpGet]
@@ -49,6 +52,20 @@ namespace ContosoRecipes.Controllers
             return Created("", newRecipe);
         }
         
+        [HttpPatch("{id)")]
+        public async Task<ActionResult> UpdateRecipe(string  id,  JsonPatchDocument<Recipe> recipeUpdate)
+        {
+            var recipe = await _recipeData.GetRecipeById<Recipe>(id);
+
+            if (recipe == null)
+                return NotFound();
+            recipeUpdate.ApplyTo(recipe);
+            await _recipeData.UpdateRecipe(recipe);
+
+            return NoContent();
+        }
+
+
         [HttpDelete]
         public ActionResult DeleteRecipes()
         {
