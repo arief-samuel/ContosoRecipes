@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace ContosoRecipes
 {
@@ -58,6 +59,10 @@ namespace ContosoRecipes
                 var xmlPath = Path.Combine(AppContext.BaseDirectory,xmlFile);
 
                 c.IncludeXmlComments(xmlPath);
+                c.CustomOperationIds(apiDescription =>
+                {
+                    return apiDescription.TryGetMethodInfo(out MethodInfo methodInfo) ? methodInfo.Name : null;
+                });
 
             }).AddSwaggerGenNewtonsoftSupport();
         }
@@ -69,7 +74,11 @@ namespace ContosoRecipes
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ContosoRecipes v1"));
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "ContosoRecipes v1");
+                    c.DisplayOperationId();
+                });
             }
             else
             {

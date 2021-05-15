@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContosoRecipes", "ContosoRecipes.csproj", "{56FC9B1E-BB7D-4B77-B4DD-17622FCDED63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIClient", "..\ConsoleApp1\APIClient.csproj", "{14DFE8EB-D72E-4580-8FB8-87764406B146}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56FC9B1E-BB7D-4B77-B4DD-17622FCDED63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56FC9B1E-BB7D-4B77-B4DD-17622FCDED63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56FC9B1E-BB7D-4B77-B4DD-17622FCDED63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56FC9B1E-BB7D-4B77-B4DD-17622FCDED63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14DFE8EB-D72E-4580-8FB8-87764406B146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14DFE8EB-D72E-4580-8FB8-87764406B146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14DFE8EB-D72E-4580-8FB8-87764406B146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14DFE8EB-D72E-4580-8FB8-87764406B146}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0B5D7EE-BEE5-4D2F-956B-DE1146C3070D}
+	EndGlobalSection
+EndGlobal
