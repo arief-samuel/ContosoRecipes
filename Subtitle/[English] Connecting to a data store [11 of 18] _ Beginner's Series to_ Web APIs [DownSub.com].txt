@@ -1,0 +1,285 @@
+>> We have a lot of options to choose
+
+from when it comes
+to storing our data.
+
+We can keep data in memory or
+export it to a file on disk.
+
+We can keep it in a
+local database or even
+
+choose to use a hosted
+option in the Cloud.
+
+In this video, I want
+to show you how we
+
+can connect our Web
+API to a database.
+
+In this case, we're
+going to use MongoDB.
+
+If you're unfamiliar with MongoDB,
+
+it's a really popular
+open-source database
+
+that actually stores its
+information as JSON documents.
+
+It has support across
+a wide variety of
+
+programming languages and
+even supports a C# client.
+
+Now, one of the things
+I really love about
+
+Mongo is that I have the ability to
+
+download their database server
+
+locally and use it while
+I'm doing development.
+
+When I'm ready, I
+could switch over to
+
+a hosted option using something
+like Azure Cosmos DB.
+
+Now, if you want to know a
+little bit more about Mongo,
+
+I definitely recommend you check
+out some of our documentation.
+
+But for now, let's head
+over to Visual Studio and
+
+see how we can connect
+Mongo to our Web API.
+
+Before we head over to Visual Studio,
+
+I want to show you the instance of
+
+MongoDB that I have
+running on my machine.
+
+Here, I created a database called
+
+cookbook and inside of cookbook,
+
+I have a collection called recipes.
+
+Now, if you're coming
+from the SQL world,
+
+a collection is very
+similar to a table.
+
+Inside of my collection, I have
+a lot of information that I
+
+prepopulated with different
+recipes that I really like.
+
+Now, let's head over
+to Visual Studio.
+
+The first thing I want to do is
+
+add some of those
+connection string settings.
+
+The way we'll do that is
+using our App Settings file.
+
+Notice that I'm including
+the connection string,
+
+the name of the database
+we want to connect to,
+
+and also the name of the collection.
+
+Next, we need to add
+that NuGet package
+
+that we talked about earlier.
+
+I'm going to right-click and
+go to "Manage NuGet Packages",
+
+and now we're going to
+search for the Mongo driver.
+
+This is the official MongoDB
+package that we want to install.
+
+Notice that I have this
+little green check box there.
+
+That just means that it's already
+installed in my application.
+
+Next, let's wire up Mongo to our app.
+
+I created this little helper
+method here called AddMongoDb.
+
+What it does is look into our
+App Settings file and pull out
+
+that configuration
+information and pass it to
+
+that MongoClient that we'd have
+gotten from that NuGet package.
+
+Inside of our startup.cs file,
+
+if we head down to
+configure services,
+
+you'll see on line 29 that I'm
+
+making a call to that
+method, AddMongoDB.
+
+On line 30, you might
+notice I'm adding
+
+something else, the
+MongoRecipeDatastore.
+
+This is just a class that I
+created to make it a little bit
+
+easier to work with MongoDB
+and our recipe's API.
+
+There's one other change that I
+
+think you might be
+interested in as well.
+
+If we take a look at
+our recipe's record,
+
+you might see that I've added some
+additional information to it.
+
+I've added some more properties,
+
+and I've also turn ingredients
+from a string to another record.
+
+Now we can store more information
+about ingredients such as name,
+
+amounts, and the units.
+
+The last thing that
+we want to do here is
+
+connect all of this to
+our recipes controller.
+
+Now, if you recall that
+
+MongoRecipeDatastore that we
+wired up in our startup.cs file,
+
+we can actually ask
+for an instance of
+
+that and [inaudible]
+accrual provided for us.
+
+The way that we can do that is by
+
+creating a constructor for
+our recipe's controller,
+
+and the parameter that our
+constructor accepts needs to be
+
+the interface that our
+MongoRecipeDatastore implements.
+
+As you can see now,
+
+once we get that,
+
+we can start using it inside
+of our action methods.
+
+If we take a look at
+our Get Operation,
+
+notice that we're no longer relying
+on those hard coded values.
+
+Instead, I can use our data store
+
+to query for a collection of recipes.
+
+Notice that I'm still able to
+use the query string parameter
+
+to specify the number of recipes
+I want to have returned.
+
+Let's run this and see how it works.
+
+Here inside of my Swagger UI,
+
+I want to check out
+our Get Operation.
+
+I'll hit "Try it out" and I'll
+
+enter the number of
+recipes I want to return.
+
+I'm going to put three
+and hit "Execute".
+
+As I scroll down, you can see
+that we got that 200 status code,
+
+but also notice all this information
+that we're getting returned.
+
+Not only am I getting the title,
+
+but I'm also getting
+the description and
+
+also detailed information about
+the ingredients such as the name,
+
+the amount, and the
+units of measurement.
+
+Now you've seen how
+we can move away from
+
+those hard coded values and
+
+instead get our information
+from a database.
+
+In the next video, we're
+going to learn how we can
+
+validate data that comes
+over in our API requests.
+
+[MUSIC]
+

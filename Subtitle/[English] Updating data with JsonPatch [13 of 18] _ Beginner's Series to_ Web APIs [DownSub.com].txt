@@ -1,0 +1,234 @@
+>> By convention, there are
+
+two HTTP methods that are used
+whenever we're updating resources,
+
+and those are called Put and Patch.
+
+With Put, updates are issued
+by replacing entire resources,
+
+but with Patch, we can update
+
+individual properties
+inside of a given resource.
+
+That means that for Put requests,
+
+we usually have to contain
+
+that entire resource inside
+of the message body,
+
+but for Patch, we just have to define
+
+the individual properties and
+the associated update operation.
+
+In this video, I'm going to show
+you how we can apply some of
+
+those incremental updates using
+something called JSON Patch.
+
+There you go, you probably guessed
+it, there's a spec for that.
+
+JSON Patches has spec
+that defines how we can
+
+issue updates to resources
+inside of our web APIs,
+
+and it's defined in spec RFC 6902.
+
+If you want to look it up, you
+can go ahead and search for that.
+
+Now, JSON Patch defines operation,
+
+such as add, remove,
+
+replace, or even move.
+
+If we want to implement this
+inside of ASP.NET Core,
+
+we just have to install
+a few NuGet packages.
+
+Let's go ahead and take a look.
+
+Support for JSON Patch isn't enabled
+
+by default inside of
+our web API templates,
+
+so there's a few NuGet packages
+that we need to install.
+
+First, make sure you
+
+install the
+Microsoft.AspNetCore.JsonPatch package.
+
+Next, install the Microsoft.
+
+AspNetCore.Mvc.NewtonsoftJson
+package as well.
+
+These two are needed to enable
+
+that JSON Patch support
+inside of our web API.
+
+Lastly, make sure you
+
+install the
+Swashbuckle.AspNetCore.Newtonsoft package.
+
+We need that to make sure that
+
+JSON Patch support works
+inside of our Swagger UI.
+
+Next, let's head over
+to the startup.cs
+
+file to enable these features.
+
+On line 32, notice I'm adding
+a call to add NewtonsoftJson.
+
+Also, on line 37, we're enabling
+
+NewtonsoftSupport for our Swagger
+UI by another method call.
+
+Last thing we need to do is
+actually update our controller.
+
+Now, you might notice that I have
+a few extra methods inside here,
+
+but I want us to pay attention to
+the UpdateRecipe action method.
+
+On line 51, you can notice that I'm
+
+including a routing perimeter of ID.
+
+This is going to represent the ID
+
+of the recipe that I want to update.
+
+In a parameter list,
+
+you can also see that I'm accepting
+a type of JSON Patch document.
+
+This type became available to us,
+
+after we install some of
+those NuGet packages.
+
+Now, inside of my action method,
+
+I just need to retrieve that
+resource and then on line 59,
+
+I can call apply to.
+
+That's going to apply all those
+JSON Patch updates to my recipe.
+
+Next, we just have to persist that
+
+to the database and then hopefully,
+
+return a successful response.
+
+Why don't we head over to the
+Swagger UI and try this out.
+
+First thing I want to do
+inside of the Swagger UI is,
+
+let's check out this GET method.
+
+Now, this particular GET method,
+
+it's going to return a single recipe.
+
+I want to paste in the ID of a
+recipe that I know I want to get.
+
+As we scroll down,
+notice this one says,
+
+the best meatballs in the title.
+
+Why don't we use JSON Patch
+to update that title.
+
+Let's go to the Patch,
+
+I want to hit try out.
+
+As you can imagine, I have to give it
+
+the ID of the recipe
+I want to update,
+
+but now inside of the body,
+
+I have to specify the
+updates I want to make.
+
+So I want to update the title,
+
+I want to replace it,
+
+and then instead of from,
+
+I'm going to make this value,
+
+and the value I want to change
+this to is 30 minutes meatballs.
+
+There we go. Now, I'm
+going to execute that,
+
+and as we scroll down,
+
+I got a 200 level status codes.
+
+I hope that means that
+everything is working fine.
+
+Let's come back to our GET
+operation and let's issue
+
+this request against
+that particular recipe.
+
+Once I run it, there you go.
+
+You can see that the
+title has been updated.
+
+Therefore, that means that our
+JSON Patch request has worked.
+
+Now you know how to enable
+
+incremental updates to your web
+API resources using JSON Patch.
+
+As an exercise for yourself,
+
+why don't you try doing another
+update instead with HTTP Put.
+
+[MUSIC]
+

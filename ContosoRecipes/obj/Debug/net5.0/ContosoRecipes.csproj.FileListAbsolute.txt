@@ -27,3 +27,16 @@ C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\obj\Debug\net5
 C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\obj\Debug\net5.0\ref\ContosoRecipes.dll
 C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\obj\Debug\net5.0\ContosoRecipes.pdb
 C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\obj\Debug\net5.0\ContosoRecipes.genruntimeconfig.cache
+C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\bin\Debug\net5.0\DnsClient.dll
+C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\bin\Debug\net5.0\MongoDB.Bson.dll
+C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\bin\Debug\net5.0\MongoDB.Driver.dll
+C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\bin\Debug\net5.0\MongoDB.Driver.Core.dll
+C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\bin\Debug\net5.0\MongoDB.Libmongocrypt.dll
+C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\bin\Debug\net5.0\SharpCompress.dll
+C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\bin\Debug\net5.0\runtimes\win\native\libzstd.dll
+C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\bin\Debug\net5.0\runtimes\win\native\snappy32.dll
+C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\bin\Debug\net5.0\runtimes\win\native\snappy64.dll
+C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\bin\Debug\net5.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\bin\Debug\net5.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\ephra-samuel\Documents\notes\WebApi's-101\ContosoRecipes\bin\Debug\net5.0\runtimes\win\native\mongocrypt.dll

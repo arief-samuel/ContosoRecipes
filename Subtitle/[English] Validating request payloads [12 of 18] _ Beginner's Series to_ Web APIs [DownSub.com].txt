@@ -1,0 +1,189 @@
+>> If you write software that
+accepts user input, rule number one,
+
+never trust that user input,
+
+that could be a very dangerous
+
+and expensive problem
+for you to solve.
+
+Instead, we should always validate
+
+that input before we pass it along
+to the other parts of our code.
+
+That's why in this video we
+need to learn how to apply
+
+validation to our
+ASP.NET Core web APIs.
+
+Now, we've already spoken about what
+
+the structure of our recipe's
+resource looks like,
+
+but we actually haven't spoken
+about what makes a valid recipe?
+
+What properties are required?
+
+What properties need to match?
+
+Are there date requirements
+or expiration requirements?
+
+We need to be able to apply some of
+
+these validation rules to our code.
+
+One way that we could do that
+is by making use of some of
+
+the built-in validation
+attributes inside of .NET.
+
+Besides, you can see I could
+use the required attribute,
+
+or the max or min length attribute.
+
+I can use an e-mail attribute
+or I can actually even
+
+specify my own custom validation
+attribute if I wanted to.
+
+After we validated our resource,
+
+we need to be able to report
+back those errors to the client.
+
+As it turns out, there's
+a spec for that,
+
+and it's called Problem Details,
+
+and is defined in this RFC 7807.
+
+Now, this defines a very
+common uniformed way
+
+that we could report errors
+back to the calling client.
+
+Luckily for us, it's already built-in
+
+and implemented inside
+of ASP.NET Core,
+
+so we don't have any work
+that we really need to do.
+
+Why don't we head over
+to Visual Studio,
+
+and see how we could use
+some of these things.
+
+To get access to those built-in
+validation attributes,
+
+we have to add a using statement,
+
+and include the
+System.ComponentModel.DataAnnotations name space.
+
+You can see that's what
+I'm doing on line three.
+
+Now we can imply those validation
+
+attributes to the properties
+of our recipes record.
+
+On line 13 you could see that
+I'm making title required.
+
+On line 19, I'm also making
+ingredients required.
+
+Now based on your API
+and your business rules,
+
+you may have other validation logic
+
+that you want to apply
+to your resource.
+
+Let's head over to the Swagger UI.
+
+I want to look at the post-operation.
+
+If you recall what this does,
+
+it accepts input from the user
+
+that it's going to use
+to make a new recipe.
+
+Notice how when I hit "Try it out" it
+
+pre-populates some of
+this information from us.
+
+But for the sake of this demo,
+
+I'm just going to remove this.
+
+Now when I hit "Execute" I
+get a 400 level status code,
+
+which means it was a bad request.
+
+If we inspect the request body,
+
+I can see some details about
+those validation errors.
+
+Notice it says the title
+field is required,
+
+and ingredients field
+is also required.
+
+The format this is returned to us
+
+is based on that problem
+detail specification.
+
+As I mentioned before,
+
+these validation
+attributes are one of
+
+many options for applying
+validation logic to your code.
+
+I can even make use of something like
+
+the model state property that's
+inside of the controller class,
+
+I can implement AI
+validatable object,
+
+or I can even make use of some of
+
+the open-source frameworks
+that apply validation.
+
+Now, stay tuned because in the
+next video we're going to learn
+
+how we can update resources
+using JSON patch.
+
+[MUSIC]
+
