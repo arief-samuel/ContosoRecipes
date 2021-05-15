@@ -1,0 +1,158 @@
+throughout most of this series we've
+
+been using the swagger ui to debug and
+
+test our web apis
+
+but don't get mad at me if i tell you
+
+that there's another option as well
+
+we can use the http ripple to explore
+
+our web apis and we can do it all via
+
+the command line
+
+why don't we take a look and see how it
+
+works the way that we work with the http
+
+rebel is by invoking it on the command
+
+line
+
+so i'll type in http rebel but notice
+
+that i don't have it installed
+
+so we need to issue this command dotnet
+
+tool installed
+
+and the name of the package which is
+
+microsoft.net dash
+
+http reference
+
+now that it's installed i should be able
+
+to type http reply-h
+
+and i should be able to see all of the
+
+available options that there so notice
+
+that i could connect to a particular api
+
+i can issue various http commands and i
+
+even have the option to navigate through
+
+an api
+
+so let's clear the screen and see how we
+
+can connect it to our web api
+
+our base url is localhost 5001 so let's
+
+do http reply
+
+and i'll give it the base address
+
+and now we should be connected to our
+
+api if i wanted to see what endpoints
+
+are available i can use the ls command
+
+and since our recipe's endpoints are
+
+prefixed with the slash api
+
+i need to navigate down that path let's
+
+do slash api
+
+now let's navigate down one more level
+
+and go into that recipes path
+
+now inside here i can just type get and
+
+that will issue a get request against
+
+the slash api
+
+recipes endpoint
+
+whoa and there you see it's returned to
+
+us a collection of recipes
+
+what if we wanted to just get one recipe
+
+let's grab
+
+the id from one of these recipes i'll
+
+type in ls
+
+and notice that i have the option to
+
+invoke an endpoint with that id token
+
+so if i type get i'm passing that id
+
+when i hit enter it should just return
+
+that single recipe
+
+the http reply allows me to navigate
+
+through my api
+
+just like i'm navigating through folders
+
+on my desktop and this is all powered by
+
+that open api specification that we've
+
+been talking about throughout the series
+
+now let's say you actually wanted to use
+
+a ui i can type ui
+
+enter and this will actually open a
+
+browser tab with the swagger ui so you
+
+have the option to go between both if
+
+you wanted to
+
+using the replica allows you to do more
+
+than just issue get requests
+
+you can use put post patch delete and
+
+tons of the other ones
+
+i can set the http headers and i can
+
+even set the body that gets sent over in
+
+the request
+
+if you're a person that prefers working
+
+in the command line i think this is a
+
+great option for you to check out
+
+you
+

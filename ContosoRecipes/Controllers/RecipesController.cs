@@ -8,21 +8,18 @@ using Microsoft.Extensions.Logging;
 using ContosoRecipes.Models;
 using ContosoRecipes.Data;
 using Microsoft.AspNetCore.JsonPatch;
+using System.Net.Mime;
+using Microsoft.AspNetCore.Http;
 
 namespace ContosoRecipes.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Produces(MediaTypeNames.Application.Json)]
+    [Consumes(MediaTypeNames.Application.Json)]
     public class RecipesController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-        private readonly ILogger<WeatherForecastController> _logger;
         private readonly IRecipeDataStore _recipeData;
-
         public RecipesController(IRecipeDataStore recipeData)
         {
             _recipeData = recipeData;
@@ -42,7 +39,24 @@ namespace ContosoRecipes.Controllers
             return Ok(recipes.Take(count));
 
         }
-        
+
+        /// <summary>
+        /// Returns a recipe for a given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> GetRecipesById(string id)
+        {
+            var recipe = await _recipeData.GetRecipeById<Recipe>(id);
+            if (recipe == null)
+                return NotFound();
+
+            return Ok(recipe);
+        }
+
         [HttpPost]
         public ActionResult CreateNewRecipe([FromBody] Recipe newRecipe)
         {
@@ -65,7 +79,6 @@ namespace ContosoRecipes.Controllers
 
             return NoContent();
         }
-
 
         [HttpDelete]
         public ActionResult DeleteRecipes()

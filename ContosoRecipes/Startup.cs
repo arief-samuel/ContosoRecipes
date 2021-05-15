@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using CentosoRecipes;
 using ContosoRecipes.Data;
@@ -33,7 +35,30 @@ namespace ContosoRecipes
             services.AddControllers().AddNewtonsoftJson();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ContosoRecipes", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo 
+                { 
+                    Title = "ContosoRecipes", 
+                    Description = "Contoso Recipes Descriptions",
+                    Contact =  new OpenApiContact
+                    {
+                        Name = "Arief Samuel",
+                        Email = "ariefsamuel21@gmail.com",
+                        Url = new Uri("http://ariefsamuel.cyou")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "MIT License",
+                        Url = new Uri("https://opensource.org/licenses/MIT")
+                    },
+                    Version = "v1" 
+                });
+
+                //Generates the xml docs that will drive swagger docs
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName()}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory,xmlFile);
+
+                c.IncludeXmlComments(xmlPath);
+
             }).AddSwaggerGenNewtonsoftSupport();
         }
 

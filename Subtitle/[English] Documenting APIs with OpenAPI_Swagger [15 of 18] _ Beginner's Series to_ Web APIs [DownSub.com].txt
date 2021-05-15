@@ -261,7 +261,7 @@ So you can see I'm using
 the ProducesResponseType,
 
 and I'm seeing it returns a
-200OK and also a 44NotFound.
+200OK and also a 404NotFound.
 
 Let's save this and head
 back over to the Swagger UI.
