@@ -29,16 +29,16 @@ namespace ContosoRecipes.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetRecipes([FromQuery] int count)
+        public async Task<ActionResult> GetRecipes([FromQuery] int count)
         {
-            Recipe[] recipes= {
-                new() {Title = "Oxtail"},
-                new() { Title = "Curry Chicken"},
-                new() {Title =  "Dumplings"}
-                };
-
+            if(count <= 0)
+            {
+                throw new ArgumentException("Invalid Count", nameof(count));
+            }
+            var recipes = await _recipeData.GetRandomRecipes<Recipe>(count);
             if(!recipes.Any())
                 return NotFound();
+
             return Ok(recipes.Take(count));
 
         }

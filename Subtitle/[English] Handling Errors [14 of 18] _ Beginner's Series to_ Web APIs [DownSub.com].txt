@@ -1,0 +1,234 @@
+>> Bad things happen sometimes,
+
+but what matters is how we react and
+
+recover to those issues
+whenever they show up.
+
+In this video I want to
+show you how you can handle
+
+unexpected exceptions inside
+of your ASP.NET Core web APIs.
+
+Depending on the environment
+that you're hosting it,
+
+you might want to expose
+a different level of
+
+error detail by exceptions that
+get thrown in your application.
+
+On line 37, you can see that we have
+
+a call-to-use developer
+exception page,
+
+and this is included by default
+in most of the templates.
+
+What this does is enable the
+reporting page that gives us a lot of
+
+detailed information
+about the request
+
+and the exception that was thrown.
+
+Now this is really useful,
+
+but it probably exposes
+
+a little bit too much detail
+
+than what we'd want to
+expose to our client.
+
+That's why on line 42,
+
+I'm using that call to
+the exception handler.
+
+As long as we're not
+in development mode,
+
+we're going to use the
+exception handler instead
+
+of using that developer
+exception page.
+
+Now notice my exception handler
+is pointing to a /error endpoint.
+
+That endpoint is going to get handled
+
+by this error control that I created.
+
+Inside of the action method,
+
+notice that I'm reaching
+into the http context,
+
+and I'm pulling out information
+about the exception was thrown,
+
+such as the stack
+trace and the message.
+
+Notice at this point that
+you probably want to log
+
+this information to whatever error
+reporting system that you use.
+
+Then lastly, I'm going to
+call that problem method,
+
+and it's going to
+return a response in
+
+that problem details format
+that we spoke about earlier.
+
+The last thing that we need to do is
+
+actually throw an exception
+inside of our API.
+
+I'm going to open up that
+GetRecipes action method,
+
+and you can see here, I've
+edited check for count.
+
+If it's less than or equal to zero,
+
+I'm going to throw an
+argument exception.
+
+Let's go ahead and run
+this and see what happens.
+
+I'm going to go to
+the recipes endpoint.
+
+I want to try out my get operation.
+
+I'm going to put zero here, and
+now I'm going to execute it.
+
+Notice in the response body,
+
+I get a lot of detailed information.
+
+Let's actually copy this URL and
+paste it inside of a browser tab.
+
+This is the developer exception
+page that I spoke to you about.
+
+Notice it gives us the stack trace
+
+information about the query string,
+
+http headers, and even
+routing information.
+
+Like I mentioned
+before, this is great,
+
+but definitely a little bit
+too much to be exposing to
+
+our clients. Let's stop this.
+
+Let's change our applications
+to run in production mode.
+
+To do that, we just have
+to make one quick change.
+
+I'm going to go to Properties,
+
+and then inside of the
+project properties,
+
+I'm going to go to the Debug section.
+
+Inside here, I'll change this
+from development to production.
+
+I'll save that. Now let's
+run this one more time.
+
+Notice that the Swagger UI
+is no longer loading for us,
+
+and that's exactly
+what we've expected,
+
+because if you recall,
+
+the swagger UI should only load
+if we're in development mode,
+
+it does not load when
+we're in production.
+
+So so far so good.
+
+Now in the address bar,
+
+I'm going to paste that API endpoint.
+
+Notice now I'm no longer getting
+that developer exception page.
+
+Let's actually take a look at
+
+the developer tools
+inside of the browser.
+
+Now I'm going to reload this page,
+
+and notice that I'm getting
+a 500 lever status code.
+
+If I click on the details,
+
+inside of the body of that response,
+
+notice how the error is formatted
+in that problem details format.
+
+It gives me the status,
+
+the title, the trace id,
+
+and some other information,
+
+but it doesn't give me as
+
+much detail as a
+developer exception page.
+
+Always remember, as you're
+designing your web APIs,
+
+we should never expose
+
+too much detailed error
+exception to the client.
+
+That could either be
+very confusing for them,
+
+or expose too much information
+about our [inaudible] ,
+
+which could be really dangerous.
+
+[MUSIC]
+

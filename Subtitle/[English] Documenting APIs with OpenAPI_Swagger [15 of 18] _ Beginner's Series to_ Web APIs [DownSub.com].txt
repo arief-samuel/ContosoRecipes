@@ -1,0 +1,309 @@
+>> Providing documentation for
+our software is important,
+
+not only for our clients,
+
+but also for our future selves.
+
+That's no different for our web APIs.
+
+In this video, I want to
+dive a little bit deeper
+
+into the open API spec
+and show you how we
+
+can customize that
+Swagger UI experience
+
+to provide more detailed
+information about our project.
+
+Before we start customizing
+our Swagger UI,
+
+let's take another look at it,
+
+to see what we get out of the box.
+
+At the top, you can
+see I have the name of
+
+my project, but right underneath it,
+
+I also have a link here that links
+
+that open API doc that tells me
+details about my operations.
+
+If I head back to the center,
+
+I can see all of the available
+API endpoints for my project.
+
+So here are my error endpoints,
+
+and the ones associated
+with my RecipesController.
+
+When I take a look at these,
+
+I don't see a lot of information
+about what these exactly do.
+
+If I click on them, I
+can see the parameters,
+
+and I can also see the
+responses at the bottom.
+
+When we look at responses,
+
+notice it only shows me
+the successful responses.
+
+I have no idea what happens
+
+whenever exceptions or errors
+are thrown inside of my app.
+
+Let's take a look at
+the POST operation.
+
+We can see an example of what
+
+the shape of the request
+body should look like,
+
+whenever it hits our API.
+
+But again, as I scroll down
+and I look at responses,
+
+I don't see the correct responses.
+
+This doesn't return a
+200 level status code,
+
+it returns at 201,
+
+and then I also don't see any
+error status codes being shown.
+
+Let's head over to Visual Studio and
+
+start customizing
+some of these things.
+
+Inside of my startup.cs file,
+
+I'm going to head down to the
+ConfigureServices method.
+
+Now, what I want to do is add
+
+some general information
+about my API,
+
+so I'm going to select
+this code block,
+
+and I'm going to paste in
+some of my own information.
+
+Here you can see I've
+updated the title,
+
+and I've also added a description,
+
+contact information, and also,
+
+information about the license.
+
+This case, I'm using an MIT license.
+
+I just need to make
+sure that I include
+
+all the using statements
+that I need for this.
+
+Now when I save this,
+
+I should see the changes
+inside of the Swagger UI,
+
+since I'm using dotnet watch.
+
+Here you go. You can see that it's
+
+added some of that
+general information here.
+
+You can use this to add
+
+whatever general descriptions
+you need for your API.
+
+Let's see how we can add some
+more details to these operations.
+
+Back in Visual Studio,
+
+let's head over to our
+RecipesController.
+
+For our Get operation, I want to add
+
+a description using some comments,
+
+returns a recipe for a given ID.
+
+We'll save that, and when I tab
+over to Visual Studio and I
+
+refresh this page, it's
+not showing anything.
+
+I must be missing some
+more information.
+
+Let's take a look at
+the project properties.
+
+I'll go to "Project" and
+I'll hit on Properties.
+
+Now to make sure that those comments
+
+actually generate documentation,
+
+I need to hit this checkbox enable
+
+the generation of an
+XML documentation file.
+
+What I'll also do is, I'll remove
+
+the absolute path and just
+make this a relative path.
+
+Now, if any of you have
+ever turned this on before,
+
+you know that that could generate
+a lot of warning sometimes.
+
+So I'm going to let Visual
+Studio know that it
+
+should suppress those
+documentation warnings.
+
+Let's save that and let's head
+back to that startup.cs file.
+
+We need to let Swagger
+know that it could use
+
+that documentation file
+for our API descriptions.
+
+Let's include these using
+statements for these missing types.
+
+Here in this code I've just pasted,
+
+I'm just grabbing that generated
+
+document and passing
+along to Swagger.
+
+Let's save this and
+see what happens now,
+
+when we head back over to Swagger UI.
+
+So if I refresh this page,
+
+notice how my description is now
+getting included in my operation.
+
+But we still have the
+wrong status codes,
+
+so let's see if we can fix that.
+
+Back in Visual Studio,
+
+I want to go to my RecipesController,
+
+and there are two attributes
+that I want to add to
+
+my controller that's
+produces and consumes.
+
+These attributes let the
+Swagger tools know that we're
+
+producing and consuming
+JSON inside of our API.
+
+Now, going down to our Get operation,
+
+we use some more attributes that'll
+
+specify the status codes
+that this operation returns.
+
+So you can see I'm using
+the ProducesResponseType,
+
+and I'm seeing it returns a
+200OK and also a 44NotFound.
+
+Let's save this and head
+back over to the Swagger UI.
+
+When I refresh this page
+
+just click this operation,
+and there you have it.
+
+Now I have my 200
+success and also my 404.
+
+Notice the media type that's here,
+
+only says application at JSON,
+
+and that's because
+of those attributes
+
+that we added to our controller.
+
+Now you've seen how you can start
+customizing that Swagger UI,
+
+by adding some attributes
+to the controller.
+
+Why don't you start
+going through some of
+
+the other operations in the API,
+
+and add some attributes of your own.
+
+In the next video,
+
+we're going to see how we can take
+
+some of this documentation that we're
+
+generating with Swagger and use
+it to generate Web API clients.
+
+[MUSIC]
+
