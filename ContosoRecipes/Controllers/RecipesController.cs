@@ -49,6 +49,7 @@ namespace ContosoRecipes.Controllers
             bool badThingsHappened = false;
             if (badThingsHappened)
                 return BadRequest();
+
             return Created("", newRecipe);
         }
         
