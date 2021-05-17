@@ -8,12 +8,12 @@ namespace ContosoRecipes.Data
 {
     public interface IRecipeDataStore
     {
-        public Task<IEnumerable<T>> GetRandomRecipes<T>(int count);
-        public Task<T> GetRecipeById<T>(string id);
-        public Task<IEnumerable<T>> GetRecipesById<T>(string ids);
-        public Task<IEnumerable<T>> SearchRecipesByIngredients<T>(string[] ingredients);
-        public Task<IEnumerable<T>> SearchRecipesByTags<T>(string[] tags);
-        public Task UpdateRecipe(Recipe recipe);
-        public Task RemoveRecipe(string recipe_id);
+         Task<IEnumerable<T>> GetRandomRecipes<T>(int count);
+         Task<T> GetRecipeById<T>(string id);
+         Task<IEnumerable<T>> GetRecipesById<T>(string ids);
+         Task<IEnumerable<T>> SearchRecipesByIngredients<T>(string[] ingredients);
+         Task<IEnumerable<T>> SearchRecipesByTags<T>(string[] tags);
+         Task UpdateRecipe(Recipe recipe);
+         Task RemoveRecipe(string recipe_id);
     }
 }
